@@ -73,18 +73,15 @@
     background-color: rgba(0, 0, 0, 0.8);
   }
 
-  .modal-content {
-    background-color: #fff;
-    max-width: 1000px;
-    margin: 100px auto;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-	overflow-y: auto; 
-  }
-  .album-image {
-    margin: 5px;
-  }
+.modal-content {
+  background-color: #fff;
+  max-width: 1000px; /* Adjust the maximum width as needed */
+  margin: 100px auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  overflow-y: auto; /* Add this line to enable vertical scrolling */
+}
 
 .image-grid {
   display: grid;
@@ -99,15 +96,13 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   transition: transform 0.3s ease;
-  margin: 5px;
-
 }
 
 .album-image:hover {
   transform: scale(1.05);
 }
 
-/* ... (previous styles) */
+
 
   .close-btn {
     position: absolute;
@@ -133,7 +128,7 @@
         <div class="album-title">Album 1</div>
       </li>
       <li class="album-tile">
-        <img class="album-thumbnail" src="album2-thumbnail.jpg" alt="Album 2 Thumbnail">
+        <img class="album-thumbnail" src="monkeyMafia.jpg" alt="Album 2 Thumbnail">
         <div class="album-title">Album 2</div>
       </li>
       <li class="album-tile">
@@ -143,11 +138,13 @@
       <!-- Add more album tiles as needed -->
     </ul>
   </div>
-  <div class="album-modal">
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
-    </div>
+<div class="album-modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <div class="image-grid"></div>
   </div>
+</div>
+
   
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -167,13 +164,8 @@
 
         const imageLinks = albumImages.map((image) => `<a href="${image}" target="_blank"><img src="${image}" alt="${albumTitle}" class="album-image"></a>`).join("");
 
-        const modalContent = document.querySelector(".modal-content");
-        modalContent.innerHTML = `
-          <h2>${albumTitle}</h2>
-          <div class="image-grid">
-            ${imageLinks}
-          </div>
-        `;
+        const imageGrid = document.querySelector(".image-grid");
+        imageGrid.innerHTML = imageLinks;
 
         const albumModal = document.querySelector(".album-modal");
         albumModal.style.display = "block";
@@ -184,8 +176,8 @@
       const albumModal = document.querySelector(".album-modal");
       albumModal.style.display = "none";
 
-      const modalContent = document.querySelector(".modal-content");
-      modalContent.innerHTML = "";
+      const imageGrid = document.querySelector(".image-grid");
+      imageGrid.innerHTML = "";
     });
 
     window.addEventListener("click", function (event) {
@@ -193,12 +185,13 @@
       if (event.target === albumModal) {
         albumModal.style.display = "none";
 
-        const modalContent = document.querySelector(".modal-content");
-        modalContent.innerHTML = "";
+        const imageGrid = document.querySelector(".image-grid");
+        imageGrid.innerHTML = "";
       }
     });
   });
 </script>
+
 
 
 </body>
