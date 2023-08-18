@@ -113,6 +113,7 @@
   }
 </style>
 </head>
+
 <body>
   <header>
     <h1>hard.pictures</h1>
@@ -123,21 +124,22 @@
       <h1>Cool Monkey</h1>
     </div>
     <h2>Photo Albums</h2>
-    <ul class="album-list">
-      <li class="album-tile">
-        <img class="album-thumbnail" src="hardMonkey.jpg" alt="Album 1 Thumbnail">
-        <div class="album-title">Album 1</div>
-      </li>
-      <li class="album-tile">
-        <img class="album-thumbnail" src="monkeyMafia.jpg" alt="Album 2 Thumbnail">
-        <div class="album-title">Album 2</div>
-      </li>
-      <li class="album-tile">
-        <img class="album-thumbnail" src="album3-thumbnail.jpg" alt="Album 3 Thumbnail">
-        <div class="album-title">Album 3</div>
-      </li>
-      <!-- Add more album tiles as needed -->
-    </ul>
+<ul class="album-list">
+  <li class="album-tile">
+    <a href="https://ig.hard.pictures" class="album-link">
+      <img class="album-thumbnail" src="hardMonkey.jpg" alt="Album 1 Thumbnail">
+      <div class="album-title">Guys Homegroup</div>
+    </a>
+  </li>
+  <li class="album-tile">
+    <a href="https://memes.hard.pictures" class="album-link">
+      <img class="album-thumbnail" src="monkeyMafia.jpg" alt="Album 2 Thumbnail">
+      <div class="album-title">Memes</div>
+    </a>
+  </li>
+  <!-- Add more album link buttons as needed -->
+</ul>
+
   </div>
 <div class="album-modal">
   <div class="modal-content">
@@ -145,65 +147,6 @@
     <div class="image-grid"></div>
   </div>
 </div>
-
-  
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const albumTiles = document.querySelectorAll(".album-tile");
-    const closeBtn = document.querySelector(".close-btn");
-
-    const albumImagesMap = {
-      "Album 1": [
-        "hardMonkey.jpg",
-        "monkeyMafia.jpg",
-        "bikerMonkey.jpg",
-        // Add more image URLs for Album 1
-      ],
-      "Album 2": [
-        "monkeyMafia.jpg",
-        "drippingRooster.jfif",
-        "hardMonkey.jpg",
-        // Add more image URLs for Album 2
-      ],
-      // Add more entries for additional albums
-    };
-
-    albumTiles.forEach(function (tile) {
-      tile.addEventListener("click", function () {
-        const albumTitle = tile.querySelector(".album-title").textContent;
-        const albumImages = albumImagesMap[albumTitle];
-
-        if (albumImages) {
-          const imageLinks = albumImages.map((image) => `<a href="${image}" target="_blank"><img src="${image}" alt="${albumTitle}" class="album-image"></a>`).join("");
-
-          const imageGrid = document.querySelector(".image-grid");
-          imageGrid.innerHTML = imageLinks;
-
-          const albumModal = document.querySelector(".album-modal");
-          albumModal.style.display = "block";
-        }
-      });
-    });
-
-    closeBtn.addEventListener("click", function () {
-      const albumModal = document.querySelector(".album-modal");
-      albumModal.style.display = "none";
-
-      const imageGrid = document.querySelector(".image-grid");
-      imageGrid.innerHTML = "";
-    });
-
-    window.addEventListener("click", function (event) {
-      const albumModal = document.querySelector(".album-modal");
-      if (event.target === albumModal) {
-        albumModal.style.display = "none";
-
-        const imageGrid = document.querySelector(".image-grid");
-        imageGrid.innerHTML = "";
-      }
-    });
-  });
-</script>
 
 
 
