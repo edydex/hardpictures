@@ -152,24 +152,36 @@
     const albumTiles = document.querySelectorAll(".album-tile");
     const closeBtn = document.querySelector(".close-btn");
 
+    const albumImagesMap = {
+      "Album 1": [
+        "hardMonkey.jpg",
+        "monkeyMafia.jpg",
+        "bikerMonkey.jpg",
+        // Add more image URLs for Album 1
+      ],
+      "Album 2": [
+        "monkeyMafia.jpg",
+        "bikerMonkey.jpg",
+        "hardMonkey.jpg",
+        // Add more image URLs for Album 2
+      ],
+      // Add more entries for additional albums
+    };
+
     albumTiles.forEach(function (tile) {
       tile.addEventListener("click", function () {
         const albumTitle = tile.querySelector(".album-title").textContent;
-        const albumImages = [
-          // Replace with the actual full-resolution image URLs for the selected album
-          "hardMonkey.jpg",
-          "monkeyMafia.jpg",
-          "bikerMonkey.jpg",
-          // Add more image URLs as needed
-        ];
+        const albumImages = albumImagesMap[albumTitle];
 
-        const imageLinks = albumImages.map((image) => `<a href="${image}" target="_blank"><img src="${image}" alt="${albumTitle}" class="album-image"></a>`).join("");
+        if (albumImages) {
+          const imageLinks = albumImages.map((image) => `<a href="${image}" target="_blank"><img src="${image}" alt="${albumTitle}" class="album-image"></a>`).join("");
 
-        const imageGrid = document.querySelector(".image-grid");
-        imageGrid.innerHTML = imageLinks;
+          const imageGrid = document.querySelector(".image-grid");
+          imageGrid.innerHTML = imageLinks;
 
-        const albumModal = document.querySelector(".album-modal");
-        albumModal.style.display = "block";
+          const albumModal = document.querySelector(".album-modal");
+          albumModal.style.display = "block";
+        }
       });
     });
 
@@ -192,6 +204,7 @@
     });
   });
 </script>
+
 
 
 
